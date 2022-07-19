@@ -24,6 +24,16 @@ public:
     double eucDistance(const Iris iris) const;
     double chebDistance(const Iris iris) const;
     double manDistance(const Iris iris) const;
+
+    double getWidth() const;
+
+    double getSepalLength() const;
+
+    double getSepalWidth() const;
+
+    double getPetalLength() const;
+
+    irisType getType() const;
 };
 
 #endif //T1_IRIS_HPP

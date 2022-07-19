@@ -36,3 +36,23 @@ double Iris::manDistance(const Iris iris) const {
            fabs(this->sepalWidth - iris.sepalWidth)
            + fabs(this->petalLength - iris.petalLength);
 }
+
+double Iris::getWidth() const {
+    return width;
+}
+
+double Iris::getSepalLength() const {
+    return sepalLength;
+}
+
+double Iris::getSepalWidth() const {
+    return sepalWidth;
+}
+
+double Iris::getPetalLength() const {
+    return petalLength;
+}
+
+irisType Iris::getType() const {
+    return type;
+}
