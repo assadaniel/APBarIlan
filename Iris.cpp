@@ -34,5 +34,5 @@ double Iris::chebDistance(const Iris iris) const {
 double Iris::manDistance(const Iris iris) const {
     return fabs(this->width - iris.width) + fabs(this->sepalLength - iris.sepalLength) +
            fabs(this->sepalWidth - iris.sepalWidth)
-           + fabs(this->petalLength - iris.petalLength)
+           + fabs(this->petalLength - iris.petalLength);
 }
