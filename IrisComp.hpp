@@ -19,5 +19,9 @@ public:
     bool operator>=(const IrisComp& irisComp) const;
     bool operator==(const IrisComp& irisComp) const;
     bool operator!=(const IrisComp& irisComp) const;
+
+    const Iris &getIris() const;
+
+    double getDis() const;
 };
 #endif //T1_IRISCOMP_HPP

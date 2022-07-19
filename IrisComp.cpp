@@ -10,3 +10,12 @@ bool IrisComp ::operator>=(const IrisComp &irisComp) const {return this->dis >= 
 bool IrisComp ::operator==(const IrisComp &irisComp) const {return this->dis == irisComp.dis;}
 bool IrisComp ::operator<(const IrisComp &irisComp) const {return this->dis < irisComp.dis;}
 bool IrisComp ::operator>(const IrisComp &irisComp) const {return this->dis > irisComp.dis;}
+
+const Iris &IrisComp::getIris() const {
+    return iris;
+}
+
+double IrisComp::getDis() const {
+    return dis;
+}
+
