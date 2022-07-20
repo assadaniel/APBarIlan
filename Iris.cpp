@@ -3,8 +3,13 @@
 //
 
 #include "Iris.hpp"
+#include <iostream>
 #include <cmath>
 
+
+Iris::Iris() {
+    std::cout << "default Iris constructor called" << std::endl;
+}
 /****
  * @brief Construct a new unclassified Iris.
  * 

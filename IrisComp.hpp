@@ -13,6 +13,7 @@ private:
     double dis;
 public:
     IrisComp(Iris iris, double dis);
+    IrisComp();
     bool operator<(const IrisComp& irisComp) const;
     bool operator>(const IrisComp& irisComp) const;
     bool operator<=(const IrisComp& irisComp) const;
