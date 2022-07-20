@@ -4,6 +4,8 @@
 
 #ifndef T1_IRIS_HPP
 #define T1_IRIS_HPP
+#include <vector>
+#include <string>
 enum irisType {setosa, virginica, versicolor, UNKNOWN};
 class Iris {
 private:
@@ -13,6 +15,7 @@ private:
     double petalLength;
     irisType type;
 public:
+    Iris();
     Iris(double width, double  sepalLength, double sepalWidth, double petalLength);
     Iris(double width, double  sepalLength, double sepalWidth, double petalLength, irisType type);
 //    Iris(const Iris& iris);
@@ -34,6 +37,10 @@ public:
     double getPetalLength() const;
 
     irisType getType() const;
+
+    void setFromVector(std::vector<std::string> v);
+
 };
+std::ostream& operator<<(std::ostream& os, const Iris& iris);
 
 #endif //T1_IRIS_HPP

@@ -4,6 +4,12 @@
 
 #include "Iris.hpp"
 #include <cmath>
+#include <iostream>
+
+/**
+ * @brief Default constructor for Iris.
+ */
+Iris::Iris() {}
 
 /****
  * @brief Construct a new unclassified Iris.
@@ -118,4 +124,23 @@ double Iris::getPetalLength() const {
  */
 irisType Iris::getType() const {
     return type;
+}
+
+/**
+ * Make an Iris from a vector of the fields given in strings.
+ * @param v The vector.
+ */
+void Iris::setFromVector(std::vector<std::string> v) {
+    //THIS CODE MAY CHANGE WHEN WE GET TO SEE THE CSV FILES (mainly the order).
+    this->width = std::stod(v[0]);
+    this->sepalLength = std::stod(v[1]);
+    this->sepalWidth = std::stod(v[2]);
+    this->petalLength = std::stod(v[3]);
+    //this->type = std::stod(v[4]);
+    //This won't work, need to see how the type is given in the actual files.
+}
+
+std::ostream& operator<<(std::ostream &os, const Iris &iris) {
+    return os << iris.getWidth() << "," << iris.getSepalLength() << ","
+              << iris.getSepalWidth() << "," << iris.getPetalLength() << "," << iris.getType();
 }
