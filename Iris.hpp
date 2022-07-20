@@ -4,6 +4,8 @@
 
 #ifndef T1_IRIS_HPP
 #define T1_IRIS_HPP
+#include <vector>
+#include <string>
 enum irisType
 {
     setosa,
@@ -18,17 +20,16 @@ private:
     double sepalWidth;
     double petalLength;
     irisType type;
-
 public:
     Iris();
-    Iris(double width, double sepalLength, double sepalWidth, double petalLength);
-    Iris(double width, double sepalLength, double sepalWidth, double petalLength, irisType type);
-    //    Iris(const Iris& iris);
-    //    Iris& operator=(const Iris& iris);
-    //    Iris(const Iris&& iris);
-    //    Iris& operator=(Iris&& iris);
-    //    ~Iris();
-    // The class only has primitive types has fields therefore an implementation for the DCtor is not needed.
+    Iris(double width, double  sepalLength, double sepalWidth, double petalLength);
+    Iris(double width, double  sepalLength, double sepalWidth, double petalLength, irisType type);
+//    Iris(const Iris& iris);
+//    Iris& operator=(const Iris& iris);
+//    Iris(const Iris&& iris);
+//    Iris& operator=(Iris&& iris);
+//    ~Iris();
+//The class only has primitive types has fields therefore an implementation for the DCtor is not needed.
     double eucDistance(const Iris iris) const;
     double chebDistance(const Iris iris) const;
     double manDistance(const Iris iris) const;
@@ -42,6 +43,10 @@ public:
     double getPetalLength() const;
 
     irisType getType() const;
-};
 
-#endif // T1_IRIS_HPP
+    void setFromVector(std::vector<std::string> v);
+
+};
+std::ostream& operator<<(std::ostream& os, const Iris& iris);
+
+#endif //T1_IRIS_HPP
