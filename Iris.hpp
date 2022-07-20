@@ -6,6 +6,7 @@
 #define T1_IRIS_HPP
 #include <vector>
 #include <string>
+#include <functional>
 enum irisType
 {
     setosa,
@@ -21,18 +22,15 @@ private:
     double petalLength;
     irisType type;
 public:
-    Iris();
-    Iris(double width, double  sepalLength, double sepalWidth, double petalLength);
-    Iris(double width, double  sepalLength, double sepalWidth, double petalLength, irisType type);
-//    Iris(const Iris& iris);
+    //Iris(double width = 0, double  sepalLength = 0, double sepalWidth = 0, double petalLength = 0);
+    Iris(double width = 0, double  sepalLength = 0, double sepalWidth = 0, double petalLength = 0,
+         irisType type = UNKNOWN);
+    Iris(const Iris& iris);
 //    Iris& operator=(const Iris& iris);
 //    Iris(const Iris&& iris);
 //    Iris& operator=(Iris&& iris);
 //    ~Iris();
 //The class only has primitive types has fields therefore an implementation for the DCtor is not needed.
-    double eucDistance(const Iris iris) const;
-    double chebDistance(const Iris iris) const;
-    double manDistance(const Iris iris) const;
 
     double getWidth() const;
 
@@ -47,6 +45,9 @@ public:
     void setFromVector(std::vector<std::string> v);
 
 };
+double eucDistance(const Iris iris, const Iris iris1);
+double chebDistance(const Iris iris, const Iris iris1);
+double manDistance(const Iris iris, const Iris iris1);
 std::ostream& operator<<(std::ostream& os, const Iris& iris);
 
 #endif //T1_IRIS_HPP

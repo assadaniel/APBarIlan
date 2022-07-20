@@ -1,5 +1,6 @@
 #include "KSmallestElements.hpp"
 #include <vector>
+#include <limits>
 /**
  * @brief copied from:
  * https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-3-worst-case-linear-time/?ref=rp
@@ -10,7 +11,6 @@
 // to find k'th smallest element
 #include<iostream>
 #include<algorithm>
-#include<climits>
 
 using namespace std;
 
@@ -73,8 +73,8 @@ IrisComp& kthSmallest(IrisComp arr[], int l, int r, int k)
 	}
 
 	// If k is more than number of elements in array
-    Iris iris = Iris(INT_MAX,INT_MAX,INT_MAX,INT_MAX);
-    IrisComp irisMAX = IrisComp(iris,INT_MAX);
+    Iris iris;
+    IrisComp irisMAX = IrisComp(iris,numeric_limits<double> :: max());
 	return irisMAX;
 }
 
@@ -113,9 +113,6 @@ int partition(IrisComp arr[], int l, int r, IrisComp x)
 // End copy.
 
 vector<IrisComp> ArrayOfIris(int kth, IrisComp arr[], int size){
-//    for(int i=0;i<5;i++) {
-//        std::cout<<"DIS IS At Front " << arr[i].getDis() << std::endl;
-//    }
     IrisComp k = kthSmallest(arr,0,size-1,kth);
     vector<IrisComp> kSmallest;
     for (int i = 0; i < size; i++){
