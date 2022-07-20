@@ -5,7 +5,7 @@
 #include "IrisComp.hpp"
 IrisComp ::IrisComp(Iris iris, double dis) : iris(iris), dis(dis){};
 IrisComp ::IrisComp() {
-    Iris irisMAX = Iris(__INT_MAX__,__INT_MAX__,__INT_MAX__,__INT_MAX__);
+    Iris irisMAX(__INT_MAX__,__INT_MAX__,__INT_MAX__,__INT_MAX__);
     iris = irisMAX;
     dis = __INT_MAX__;
 

@@ -7,9 +7,7 @@
 #include <cmath>
 
 
-Iris::Iris() {
-    std::cout << "default Iris constructor called" << std::endl;
-}
+Iris::Iris() {}
 /****
  * @brief Construct a new unclassified Iris.
  * 

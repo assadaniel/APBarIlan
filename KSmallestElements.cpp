@@ -1,7 +1,7 @@
 #include "KSmallestElements.hpp"
 #include <vector>
 /**
- * @brief have been copied from: 
+ * @brief copied from:
  * https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-3-worst-case-linear-time/?ref=rp
  */
 // Start copy.
@@ -18,15 +18,22 @@ int partition(IrisComp arr[], int l, int r, int k);
 
 // A simple function to find median of arr[]. This is called
 // only for an array of size 5 in this program.
-IrisComp findMedian(IrisComp arr[], int n)
+IrisComp& findMedian(IrisComp arr[], int n)
 {
+//    for(int i=0;i<5;i++) {
+//        std::cout<<"DIS IS At Front " << arr[i].getDis() << std::endl;
+//    }
 	sort(arr, arr+n); // Sort the array
+//    for(int i=0;i<5;i++) {
+//        std::cout<<"DIS IS At End " << arr[i].getDis() << std::endl;
+//    }
 	return arr[n/2]; // Return middle element
+
 }
 
 // Returns k'th smallest element in arr[l..r] in worst case
 // linear time. ASSUMPTION: ALL ELEMENTS IN ARR[] ARE DISTINCT
-IrisComp kthSmallest(IrisComp arr[], int l, int r, int k)
+IrisComp& kthSmallest(IrisComp arr[], int l, int r, int k)
 {
 	// If k is smaller than number of elements in array
 	if (k > 0 && k <= r - l + 1)
@@ -71,11 +78,11 @@ IrisComp kthSmallest(IrisComp arr[], int l, int r, int k)
 	return irisMAX;
 }
 
-void swap(IrisComp *a, IrisComp *b)
+void swap(IrisComp& a, IrisComp& b)
 {
-	IrisComp temp = *a;
-	*a = *b;
-	*b = temp;
+	IrisComp temp = a;
+	a = b;
+	b = temp;
 }
 
 // It searches for x in arr[l..r], and partitions the array
@@ -87,7 +94,7 @@ int partition(IrisComp arr[], int l, int r, IrisComp x)
 	for (i=l; i<r; i++)
 		if (arr[i] == x)
 		break;
-	swap(&arr[i], &arr[r]);
+	swap(arr[i], arr[r]);
 
 	// Standard partition algorithm
 	i = l;
@@ -95,27 +102,26 @@ int partition(IrisComp arr[], int l, int r, IrisComp x)
 	{
 		if (arr[j] <= x)
 		{
-			swap(&arr[i], &arr[j]);
+			swap(arr[i], arr[j]);
 			i++;
 		}
 	}
-	swap(&arr[i], &arr[r]);
+	swap(arr[i], arr[r]);
 	return i;
 }
 
 // End copy.
 
-vector<IrisComp> ArrayOfIris(int kth, IrisComp arr[]){
-    std::cout << sizeof(arr);
-    /**
-    int n = sizeof(arr)/sizeof(arr[0]);
-    IrisComp k = kthSmallest(arr,0,n,kth);
+vector<IrisComp> ArrayOfIris(int kth, IrisComp arr[], int size){
+//    for(int i=0;i<5;i++) {
+//        std::cout<<"DIS IS At Front " << arr[i].getDis() << std::endl;
+//    }
+    IrisComp k = kthSmallest(arr,0,size-1,kth);
     vector<IrisComp> kSmallest;
-    for (int i = 0; i < n; i++){
-        if (arr[i] <= k){
+    for (int i = 0; i < size; i++){
+        if (arr[i] <= k) {
             kSmallest.push_back(arr[i]);
         }
     }
     return kSmallest;
-    **/
 }
