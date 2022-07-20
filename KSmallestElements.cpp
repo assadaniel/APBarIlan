@@ -1,4 +1,3 @@
-
 #include "KSmallestElements.hpp"
 #include <vector>
 /**
@@ -106,12 +105,17 @@ int partition(IrisComp arr[], int l, int r, IrisComp x)
 
 // End copy.
 
-vector<IrisComp> ArrayOfIris(IrisComp k, IrisComp arr[]){
+vector<IrisComp> ArrayOfIris(int kth, IrisComp arr[]){
+    std::cout << sizeof(arr);
+    /**
+    int n = sizeof(arr)/sizeof(arr[0]);
+    IrisComp k = kthSmallest(arr,0,n,kth);
     vector<IrisComp> kSmallest;
-    for (int i = 0; i < sizeof(arr)/sizeof(arr[0]); i++){
+    for (int i = 0; i < n; i++){
         if (arr[i] <= k){
             kSmallest.push_back(arr[i]);
         }
     }
     return kSmallest;
+    **/
 }
