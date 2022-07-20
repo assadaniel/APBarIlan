@@ -139,7 +139,12 @@ void Iris::setFromVector(std::vector<std::string> v) {
     //this->type = std::stod(v[4]);
     //This won't work, need to see how the type is given in the actual files.
 }
-
+/**
+ * << operator for Iris.
+ * @param os The out stream
+ * @param iris Iris object
+ * @return Out stream.
+ */
 std::ostream& operator<<(std::ostream &os, const Iris &iris) {
     return os << iris.getWidth() << "," << iris.getSepalLength() << ","
               << iris.getSepalWidth() << "," << iris.getPetalLength() << "," << iris.getType();
