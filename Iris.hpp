@@ -14,6 +14,7 @@ enum irisType
     versicolor,
     UNKNOWN
 };
+extern std::string enumArr[];
 class Iris{
 private:
     double width;
@@ -45,9 +46,9 @@ public:
     void setFromVector(std::vector<std::string> v);
 
 };
-double eucDistance(const Iris iris, const Iris iris1);
-double chebDistance(const Iris iris, const Iris iris1);
-double manDistance(const Iris iris, const Iris iris1);
+double eucDistance(const Iris& iris, const Iris& iris1);
+double chebDistance(const Iris& iris, const Iris& iris1);
+double manDistance(const Iris& iris, const Iris& iris1);
 std::ostream& operator<<(std::ostream& os, const Iris& iris);
 
 #endif //T1_IRIS_HPP

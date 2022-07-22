@@ -9,7 +9,7 @@
 #include <functional>
 
 
-
+std::string enumArr[] = {"Iris-setosa","Iris-virgincia", "Iris-versicolor","UNKNOWN"};
 ///****
 // * @brief Construct a new unclassified Iris.
 // *
@@ -48,7 +48,7 @@ Iris::Iris(const Iris &iris) {
  * @param iris1 second Iris
  * @return double The distance (difference) between the flowers.
  */
-double eucDistance(const Iris iris, const Iris iris1) {
+double eucDistance(const Iris& iris, const Iris& iris1) {
     return sqrtf(pow((iris1.getWidth() - iris1.getWidth()), 2) +
                  pow((iris1.getSepalLength() - iris.getSepalLength()), 2) +
                  pow((iris1.getSepalWidth() - iris.getSepalWidth()), 2) +
@@ -61,7 +61,7 @@ double eucDistance(const Iris iris, const Iris iris1) {
  * @param iris The other iris we compare.
  * @return double The distance (difference) between the flowers.
  */
-double chebDistance(const Iris iris, const Iris iris1) {
+double chebDistance(const Iris& iris, const Iris& iris1) {
     double m1 = fmax(fabs(iris1.getWidth() - iris.getWidth()),
                      fabs(iris1.getSepalLength() - iris.getSepalLength()));
     double m2 = fmax(fabs(iris1.getSepalWidth() - iris.getSepalWidth()),
@@ -76,7 +76,7 @@ double chebDistance(const Iris iris, const Iris iris1) {
  * @param iris1 second Iris
  * @return double The distance (difference) between the flowers.
  */
-double manDistance(const Iris iris, const Iris iris1) {
+double manDistance(const Iris& iris, const Iris& iris1) {
     return fabs(iris1.getWidth() - iris.getWidth()) + fabs(iris1.getSepalLength() - iris.getSepalLength()) +
            fabs(iris1.getSepalWidth() - iris.getSepalWidth())
            + fabs(iris1.getPetalLength() - iris.getPetalLength());
@@ -139,6 +139,19 @@ void Iris::setFromVector(std::vector<std::string> v) {
     this->sepalLength = std::stod(v[1]);
     this->sepalWidth = std::stod(v[2]);
     this->petalLength = std::stod(v[3]);
+    std::string t;
+    try {
+        t = v.at(4);
+        if(t=="Iris-setosa") {
+            this->type = setosa;
+        } else if(t == "Iris-versicolor") {
+            this->type = versicolor;
+        } else {
+            this->type = virginica;
+        }
+    } catch(const std::out_of_range& e) {
+        this->type = UNKNOWN;
+    }
     //this->type = std::stod(v[4]);
     //This won't work, need to see how the type is given in the actual files.
 }
@@ -153,5 +166,5 @@ void Iris::setFromVector(std::vector<std::string> v) {
  */
 std::ostream &operator<<(std::ostream &os, const Iris &iris) {
     return os << iris.getWidth() << "," << iris.getSepalLength() << ","
-              << iris.getSepalWidth() << "," << iris.getPetalLength() << "," << iris.getType();
+              << iris.getSepalWidth() << "," << iris.getPetalLength() << "," << enumArr[iris.getType()];
 }

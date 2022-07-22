@@ -1,6 +1,7 @@
 #include "KSmallestElements.hpp"
 #include <vector>
 #include <limits>
+#include <map>
 /**
  * @brief copied from:
  * https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-3-worst-case-linear-time/?ref=rp
@@ -121,4 +122,43 @@ vector<IrisComp> ArrayOfIris(int kth, IrisComp arr[], int size){
         }
     }
     return kSmallest;
+}
+IrisComp* DistancesToArray(const Iris& iris,std::vector<Iris> v, std::function<double(const Iris, const Iris)>& func) {
+    size_t n = v.size();
+    auto *irisComps = new IrisComp[n];
+    for (int i = 0; i < n; i++) {
+        double d = func(iris,v[i]);
+        irisComps[i] = IrisComp(v[i],d);
+    }
+    return irisComps;
+}
+
+irisType mostFrequentType(const vector<IrisComp>& v) {
+    std::map<irisType,int> countMap = {{setosa,0}, {virginica,0}, {versicolor,0}};
+    for(const IrisComp& irisComp : v) {
+        countMap[irisComp.getIris().getType()]++;
+    }
+    cout <<  "Setosa : " << countMap[setosa] << endl;
+    cout <<  "Virgincia : " << countMap[virginica] << endl;
+    cout <<  "versicolor : " << countMap[versicolor] << endl;
+    auto pr = std::max_element(std::begin(countMap),std::end(countMap),
+                               [](const pair<irisType,int>& p1, const pair<irisType,int>& p2) {
+        return p1.second < p2.second;
+    });
+    cout <<"The max is "<< pr->first << pr->second << endl;
+    return pr->first;
+}
+
+
+irisType determineType(int kth,IrisComp arr[],int size) {
+    return mostFrequentType(ArrayOfIris(kth,arr,size));
+}
+
+irisType typeFromIrises(const Iris& iris, const vector<Iris>& irisVector, int kth,
+                        std::function<double(const Iris, const Iris)> distanceFunction) {
+    int size = irisVector.size();
+    IrisComp* irisComp = DistancesToArray(iris,irisVector,distanceFunction);
+    irisType t = determineType(kth, irisComp,size);
+    delete[] irisComp;
+    return t;
 }
