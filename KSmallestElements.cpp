@@ -5,13 +5,13 @@
 /**
  * @brief copied from:
  * https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-3-worst-case-linear-time/?ref=rp
+ * modified to fit IrisComp instead of int and not using sort.
  */
 // Start copy.
 
 // C++ implementation of worst case linear time algorithm
 // to find k'th smallest element
 #include<iostream>
-#include<algorithm>
 
 using namespace std;
 
@@ -21,13 +21,15 @@ int partition(IrisComp arr[], int l, int r, int k);
 // only for an array of size 5 in this program.
 IrisComp& findMedian(IrisComp arr[], int n)
 {
-//    for(int i=0;i<5;i++) {
-//        std::cout<<"DIS IS At Front " << arr[i].getDis() << std::endl;
-//    }
-	sort(arr, arr+n); // Sort the array
-//    for(int i=0;i<5;i++) {
-//        std::cout<<"DIS IS At End " << arr[i].getDis() << std::endl;
-//    }
+    for (int i = 0; i < n; i++){
+            IrisComp smallest = arr[i];
+            for (int j = i; j < n; j++){
+                if (smallest > arr[j]){
+                    swap(arr[0],arr[j]);
+                    smallest = arr[j];
+                }
+            }
+        }
 	return arr[n/2]; // Return middle element
 
 }
@@ -113,6 +115,14 @@ int partition(IrisComp arr[], int l, int r, IrisComp x)
 
 // End copy.
 
+/**
+ * @brief Function returing the array of all the Iris smaller then the kth.
+ *
+ * @param kth The place of the kth iris.
+ * @param arr The array of iris.
+ * @param size The size of the array.
+ * @return A vector holding all the all the iris smaller then the kth iris.
+ */
 vector<IrisComp> ArrayOfIris(int kth, IrisComp arr[], int size){
     IrisComp k = kthSmallest(arr,0,size-1,kth);
     vector<IrisComp> kSmallest;
@@ -123,6 +133,15 @@ vector<IrisComp> ArrayOfIris(int kth, IrisComp arr[], int size){
     }
     return kSmallest;
 }
+
+/**
+ * @brief Function putting the distances into an array.
+ *
+ * @param iris A constesnt iris which we calculate the distance with.
+  * @param v The array of iris we find the distances from  iris.
+  * @param func The function we use to find the distances.
+  * @return A vector holding all the all the iris distances then the iris.
+ */
 IrisComp* DistancesToArray(const Iris& iris,std::vector<Iris> v, std::function<double(const Iris, const Iris)>& func) {
     size_t n = v.size();
     auto *irisComps = new IrisComp[n];
@@ -133,6 +152,12 @@ IrisComp* DistancesToArray(const Iris& iris,std::vector<Iris> v, std::function<d
     return irisComps;
 }
 
+/**
+ * @brief Function finding the most frequent type of iris in the array.
+ *
+ * @param v The vector we check on.
+ * @return The iris type that appear the most in the vector.
+ */
 irisType mostFrequentType(const vector<IrisComp>& v) {
     std::map<irisType,int> countMap = {{setosa,0}, {virginica,0}, {versicolor,0}};
     for(const IrisComp& irisComp : v) {
@@ -150,10 +175,26 @@ irisType mostFrequentType(const vector<IrisComp>& v) {
 }
 
 
+/**
+ * @brief Function finding the most probable type of iris for the given iris.
+ *
+ * @param kth The amount of iris we want to compare to from the given array.
+ * @param arr The array of iris we use to compare.
+ * @param size The size of the array.
+ * @return The iris type that is  the most probable to be the given iris.
+ */
 irisType determineType(int kth,IrisComp arr[],int size) {
     return mostFrequentType(ArrayOfIris(kth,arr,size));
 }
 
+/**
+ * @brief Function finding the type of the iris from the array.
+ *
+ * @param iris The iris we want to find the type of.
+ * @param irisVector The array of iris we use to compare.
+ * @param kth The amount of iris we want to compare to from the given array.
+ * @return The iris type that is  the most probable to be the given iris.
+ */
 irisType typeFromIrises(const Iris& iris, const vector<Iris>& irisVector, int kth,
                         std::function<double(const Iris, const Iris)> distanceFunction) {
     int size = irisVector.size();

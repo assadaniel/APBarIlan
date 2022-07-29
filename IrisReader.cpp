@@ -4,6 +4,11 @@
 
 #include "IrisReader.hpp"
 #include <sstream>
+/**
+ * @brief Finding the file we read from and opening him.
+ *
+ * @param fileName The name of the file we want to read from.
+ */
 IrisReader ::IrisReader(const std::string& fileName){
     fin.open(fileName, std::ios::in);
     if(!fin.is_open()) {
@@ -11,6 +16,13 @@ IrisReader ::IrisReader(const std::string& fileName){
     }
 
 }
+
+/**
+ * @brief Reading a line and initalizing an iris from the line.
+ *
+ * @param The iris we initaliize.
+ * @return Returning true if there is another line to read from, and false otherwise.
+ */
 bool IrisReader ::getNextIris(Iris& iris) {
     row.clear(); // clear the vector
     std::string line, word;

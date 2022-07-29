@@ -1,5 +1,5 @@
 //
-// Created by User on 19/07/2022.
+// Created by Daniel Assa on 19/07/2022.
 //
 
 #ifndef T1_IRIS_HPP
@@ -23,7 +23,6 @@ private:
     double petalLength;
     irisType type;
 public:
-    //Iris(double width = 0, double  sepalLength = 0, double sepalWidth = 0, double petalLength = 0);
     Iris(double width = 0, double  sepalLength = 0, double sepalWidth = 0, double petalLength = 0,
          irisType type = UNKNOWN);
     Iris(const Iris& iris);

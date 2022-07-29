@@ -1,5 +1,5 @@
 //
-// Created by User on 19/07/2022.
+// Created by Daniel Assa on 19/07/2022.
 //
 
 #include "Iris.hpp"
@@ -10,18 +10,8 @@
 
 
 std::string enumArr[] = {"Iris-setosa","Iris-virgincia", "Iris-versicolor","UNKNOWN"};
-///****
-// * @brief Construct a new unclassified Iris.
-// *
-// * @param width A double representing the width of the Iris.
-// * @param sepalLength A double representing the length of the sepal of the Iris.
-// * @param sepalWidth A double representing the width of the sepal of the Iris
-// * @param petalLength A double representing the length of the petal of the Iris
-// ****/
-//Iris::Iris(double width =0, double sepalLength =0, double sepalWidth = 0, double petalLength = 0)
-//        : width(width), sepalLength(sepalLength), sepalWidth(sepalWidth), petalLength(petalLength), type(UNKNOWN) {}
 
-/****
+/**
  * @brief Construct a new classified Iris.
  * 
  * @param width A double representing the width of the Iris.
@@ -29,7 +19,7 @@ std::string enumArr[] = {"Iris-setosa","Iris-virgincia", "Iris-versicolor","UNKN
  * @param sepalWidth A double representing the width of the sepal of the Iris
  * @param petalLength A double representing the length of the petal of the Iris
  * @param type An enum representing the type of the Iris.
- ****/
+ */
 Iris::Iris(double width, double sepalLength, double sepalWidth, double petalLength, irisType type)
         : width(width), sepalLength(sepalLength), sepalWidth(sepalWidth), petalLength(petalLength), type(type) {}
 
@@ -134,7 +124,6 @@ irisType Iris::getType() const {
  * @param v The vector.
  */
 void Iris::setFromVector(std::vector<std::string> v) {
-    //THIS CODE MAY CHANGE WHEN WE GET TO SEE THE CSV FILES (mainly the order).
     this->width = std::stod(v[0]);
     this->sepalLength = std::stod(v[1]);
     this->sepalWidth = std::stod(v[2]);
@@ -152,8 +141,6 @@ void Iris::setFromVector(std::vector<std::string> v) {
     } catch(const std::out_of_range& e) {
         this->type = UNKNOWN;
     }
-    //this->type = std::stod(v[4]);
-    //This won't work, need to see how the type is given in the actual files.
 }
 
 
