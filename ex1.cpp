@@ -29,16 +29,16 @@ int main(int argc, char **argv) {
     std::vector<Iris> unclassifiedIrises;
     while (unclassifiedIrisReader.getNextIris(uIris)) { unclassifiedIrises.push_back(uIris); }
     //Create Streams
-    std::fstream eucFout("euclidean_output.csv", std::ios::out | std::ios::app);
-    std::fstream chebFout("chebyshev_output.csv", std::ios::out | std::ios::app);
-    std::fstream manFout("manhattan_output.csv", std::ios::out | std::ios::app);
+    std::fstream eucFout("euclidean_output.csv", std::ios::out);
+    std::fstream chebFout("chebyshev_output.csv", std::ios::out);
+    std::fstream manFout("manhattan_output.csv", std::ios::out);
     for (const Iris& unclassifiedIris: unclassifiedIrises) {
         eucFout << enumArr[typeFromIrises(unclassifiedIris, classifiedIrises, k, eucDistance)]
         << std::endl;
         chebFout << enumArr[typeFromIrises(unclassifiedIris, classifiedIrises, k, chebDistance)]
-                 << std::endl;
+        << std::endl;
         manFout << enumArr[typeFromIrises(unclassifiedIris, classifiedIrises, k, manDistance)]
-                << std::endl;
+        << std::endl;
     }
 
 

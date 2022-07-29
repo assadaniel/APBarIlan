@@ -123,12 +123,10 @@ int partition(IrisComp arr[], int l, int r, const IrisComp& x)
  * @return A vector holding all the all the iris smaller then the kth iris.
  */
 vector<IrisComp> ArrayOfIris(int kth, IrisComp arr[], int size){
-    IrisComp k = kthSmallest(arr,0,size-1,kth);
+    kthSmallest(arr,0,size-1,kth);
     vector<IrisComp> kSmallest;
-    for (int i = 0; i < size; i++){
-        if (arr[i] <= k) {
-            kSmallest.push_back(arr[i]);
-        }
+    for (int i = 0; i < kth; i++) {
+        kSmallest.push_back(arr[i]);
     }
     return kSmallest;
 }
