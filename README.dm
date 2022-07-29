@@ -1,4 +1,5 @@
-This project is currently to implement the KNN algorithm with iris types.
+This project was made by Daniel Assa and Daniel Lifshitz
+Its currently meant to implement the KNN algorithm with iris types.
 We created Iris.cpp,Iris.hpp so we would be able handle each iris alone.
 We created IrisComp.cpp,IrisComp.hpp so we would be able to have the distance of two given irises and be able to work with it.
 We created IrisReader.cpp,IrisReader.hpp so we would be able to read a file filled with information about irises.
