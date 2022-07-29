@@ -163,14 +163,10 @@ irisType mostFrequentType(const vector<IrisComp>& v) {
     for(const IrisComp& irisComp : v) {
         countMap[irisComp.getIris().getType()]++;
     }
-    cout <<  "Setosa : " << countMap[setosa] << endl;
-    cout <<  "Virgincia : " << countMap[virginica] << endl;
-    cout <<  "versicolor : " << countMap[versicolor] << endl;
     auto pr = std::max_element(std::begin(countMap),std::end(countMap),
                                [](const pair<irisType,int>& p1, const pair<irisType,int>& p2) {
         return p1.second < p2.second;
     });
-    cout <<"The max is "<< pr->first << pr->second << endl;
     return pr->first;
 }
 

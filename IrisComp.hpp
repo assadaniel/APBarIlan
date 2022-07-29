@@ -1,5 +1,5 @@
 //
-// Created by User on 19/07/2022.
+// Created by Daniel Assa on 19/07/2022.
 //
 
 #ifndef T1_IRISCOMP_HPP
