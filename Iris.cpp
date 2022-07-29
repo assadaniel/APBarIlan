@@ -9,7 +9,7 @@
 #include <functional>
 
 
-std::string enumArr[] = {"Iris-setosa","Iris-virgincia", "Iris-versicolor","UNKNOWN"};
+std::string enumArr[] = {"Iris-setosa","Iris-virginica", "Iris-versicolor","UNKNOWN"};
 
 /**
  * @brief Construct a new classified Iris.

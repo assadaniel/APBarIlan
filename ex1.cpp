@@ -18,7 +18,6 @@ int main(int argc, char **argv) {
         return 0;
     }
     int k = std::stoi(argv[1]);
-    std::cout<<k<<std::endl;
     //Create classified Iris vector
     IrisReader classifiedIrisReader("classified.csv");
     Iris cIris;

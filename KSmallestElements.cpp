@@ -15,7 +15,6 @@
 
 using namespace std;
 
-int partition(IrisComp arr[], int l, int r, int k);
 
 // A simple function to find median of arr[]. This is called
 // only for an array of size 5 in this program.
@@ -36,7 +35,7 @@ IrisComp& findMedian(IrisComp arr[], int n)
 
 // Returns k'th smallest element in arr[l..r] in worst case
 // linear time. ASSUMPTION: ALL ELEMENTS IN ARR[] ARE DISTINCT
-IrisComp& kthSmallest(IrisComp arr[], int l, int r, int k)
+IrisComp kthSmallest(IrisComp arr[], int l, int r, int k)
 {
 	// If k is smaller than number of elements in array
 	if (k > 0 && k <= r - l + 1)
@@ -90,7 +89,7 @@ void swap(IrisComp& a, IrisComp& b)
 
 // It searches for x in arr[l..r], and partitions the array
 // around x.
-int partition(IrisComp arr[], int l, int r, IrisComp x)
+int partition(IrisComp arr[], int l, int r, const IrisComp& x)
 {
 	// Search for x in arr[l..r] and move it to end
 	int i;
@@ -163,11 +162,8 @@ irisType mostFrequentType(const vector<IrisComp>& v) {
     for(const IrisComp& irisComp : v) {
         countMap[irisComp.getIris().getType()]++;
     }
-    auto pr = std::max_element(std::begin(countMap),std::end(countMap),
-                               [](const pair<irisType,int>& p1, const pair<irisType,int>& p2) {
-        return p1.second < p2.second;
-    });
-    return pr->first;
+    irisType irisType = maxTypeInMap(countMap);
+    return irisType;
 }
 
 
@@ -198,4 +194,16 @@ irisType typeFromIrises(const Iris& iris, const vector<Iris>& irisVector, int kt
     irisType t = determineType(kth, irisComp,size);
     delete[] irisComp;
     return t;
+}
+
+irisType maxTypeInMap(std::map<irisType,int>& countMap) {
+    irisType maxType;
+    int maxCount = 0;
+    for(auto const& x : countMap) {
+        if(x.second >= maxCount) {
+            maxType = x.first;
+            maxCount = x.second;
+        }
+    }
+    return maxType;
 }
