@@ -28,6 +28,8 @@ The numbers in each column correspond to a feature of the iris:
 3. The iris's sepal width
 4. The iris' petal length
 5. The iris' type, from the types stated above.  
+  
+  
 The program must also receive a file ```Unclassified.csv``` which contains the same contents as the ```classified.csv``` file, but it misses the type column (or the fifth column), thus making it a file of "unclassified" irises.  
 The program assumes the files are in the same directory of the ```ex1.cpp``` file.
 ## Output
