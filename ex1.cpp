@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
     std::vector<Iris> classifiedIrises;
     while (classifiedIrisReader.getNextIris(cIris)) { classifiedIrises.push_back(cIris); }
     //Create Unclassified Iris vector
-    IrisReader unclassifiedIrisReader("unclassified.csv");
+    IrisReader unclassifiedIrisReader("Unclassified.csv");
     Iris uIris;
     std::vector<Iris> unclassifiedIrises;
     while (unclassifiedIrisReader.getNextIris(uIris)) { unclassifiedIrises.push_back(uIris); }

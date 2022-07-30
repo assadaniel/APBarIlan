@@ -12,7 +12,7 @@
 class IrisReader {
 private:
     std::string fileName;
-    std::fstream fin;
+    std::ifstream fin;
     std::vector<std::string> row;
 public:
     IrisReader(const std::string& fileName);

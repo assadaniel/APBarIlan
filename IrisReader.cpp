@@ -4,15 +4,16 @@
 
 #include "IrisReader.hpp"
 #include <sstream>
+#include <cstring>
 /**
  * @brief Finding the file we read from and opening him.
  *
  * @param fileName The name of the file we want to read from.
  */
-IrisReader ::IrisReader(const std::string& fileName){
-    fin.open(fileName, std::ios::in);
+IrisReader ::IrisReader(const std::string& fileName) : fin(fileName){
     if(!fin.is_open()) {
-        std::cout<< "Could not open the file."<<std::endl;
+        std::cout<< "Could not open the file " << fileName << std::endl;
+        std::cout<<"Error code: " << strerror(errno) << std::endl;
     }
 
 }
