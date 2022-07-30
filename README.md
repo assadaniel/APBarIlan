@@ -11,6 +11,7 @@ The ```IrisReader``` class so we would be able to read a file filled with inform
 The ``` KSmallestElements```, so we would be able to implement the KNN algorithm.  
 and so we would be able to to determine the type of the iris given to us using the algorithm. 
 ## Run the code
+### Requirements
 In order to run the code, the program must receive a parameter $k$ as ac command line argument, for example:
 ```
 ./main 3
@@ -31,7 +32,27 @@ The numbers in each column correspond to a feature of the iris:
   
   
 The program must also receive a file ```Unclassified.csv``` which contains the same contents as the ```classified.csv``` file, but it misses the type column (or the fifth column), thus making it a file of "unclassified" irises.  
-The program assumes the files are in the same directory of the ```ex1.cpp``` file.
+### Compile and run
+If the only files you have in your directory are the needed files, mainly ```ex1.cpp```, ```Iris.cpp```, ```IrisComp.cpp```, ```IrisReader.cpp```, and  ```KSmallestElements.cpp``` **and their headers (.hpp)**.
+You can compile the code with this command:  
+```
+g++ -std=c++11 *.cpp -o program
+```
+Otherwise you need to list them:
+```
+g++ -std=c++11  ex1.cpp Iris.cpp IrisComp.cpp IrisReader.cpp KSmallestElements.cpp -o program
+```
+And run on linux/mac: 
+```
+./program 9
+```
+and on windows:
+```
+program 9
+```
+Here $k=9$.  
+**Make sure the ```classified.csv``` and ```Unclassified.csv``` are in your working directory otherwise the program won't be able to find them.**
+
 ## Output
 The program outputs three files ```euclidean_output.csv```, ```chebyshev_output.csv``` and ```manhattan_output.csv```, where for each one it prints its results based on the corrosponding metric to the file name.  
 For example: 
