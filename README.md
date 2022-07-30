@@ -2,7 +2,7 @@
 
 **This project was made by Daniel Assa and Daniel Lifshitz.**
 ## Type finding
-It's currently meant to implement the KNN algorithm with iris types, for a given unclassified iris, we find its *$K$ CLOSEST NEIGHBOURS* and from them determine its type,
+It's currently meant to implement the KNN algorithm with iris types, for a given unclassified iris, we find its *K CLOSEST NEIGHBOURS* in $O\left(n\right)$ and from them determine its type,
 using the following three different types of irises: *setosa*, *virgincia*, *versicolor*. 
 ## Classes
  The ```Iris``` class, so we would be able to handle each iris alone.  
