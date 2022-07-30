@@ -193,7 +193,11 @@ irisType typeFromIrises(const Iris& iris, const vector<Iris>& irisVector, int kt
     delete[] irisComp;
     return t;
 }
-
+/**
+ * @brief Finds max value in map and returns its key.
+ * @param countMap The map of types and their count
+ * @return The key that corresponds to maximum value in map.
+ */
 irisType maxTypeInMap(std::map<irisType,int>& countMap) {
     irisType maxType;
     int maxCount = 0;

@@ -12,6 +12,7 @@
  */
 IrisReader ::IrisReader(const std::string& fileName) : fin(fileName){
     if(!fin.is_open()) {
+        //Error Message
         std::cout<< "Could not open the file " << fileName << std::endl;
         std::cout<<"Error code: " << strerror(errno) << std::endl;
     }

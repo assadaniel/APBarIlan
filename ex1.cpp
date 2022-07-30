@@ -33,6 +33,7 @@ int main(int argc, char **argv) {
     std::fstream chebFout("chebyshev_output.csv", std::ios::out);
     std::fstream manFout("manhattan_output.csv", std::ios::out);
     for (const Iris& unclassifiedIris: unclassifiedIrises) {
+        //Write the types to files.
         eucFout << enumArr[typeFromIrises(unclassifiedIris, classifiedIrises, k, eucDistance)]
         << std::endl;
         chebFout << enumArr[typeFromIrises(unclassifiedIris, classifiedIrises, k, chebDistance)]
