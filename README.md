@@ -12,7 +12,7 @@ The ``` KSmallestElements```, so we would be able to implement the KNN algorithm
 and so we would be able to to determine the type of the iris given to us using the algorithm. 
 ## Run the code
 ### Requirements
-In order to run the code, the program must receive a parameter $k$ as ac command line argument, for example:
+In order to run the code, the program must receive a parameter $k$ (should be odd) as a command line argument, for example:
 ```
 ./main 3
 ```
